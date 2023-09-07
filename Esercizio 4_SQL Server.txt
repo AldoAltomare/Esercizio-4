@@ -1,0 +1,53 @@
+Creare le seguenti interrogazioni per mezzo di T-SQL:
+
+a. Visualizzare tutti gli impiegati oltre i 29 anni;
+select * from impiegato where eta >29
+
+
+b. Visualizzare tutti gli impiegati con un reddito di almeno 800 euro mensili;
+select * from impiegato where redditomensile > 800 order by redditomensile desc
+
+c. Visualizzare tutti gli impiegati che posseggono la detrazione fiscale;
+select * from impiegato where detrazionefiscale = 'True'
+-- anche detrazionefiscale = 1
+
+d. Visualizzare tutti gli impiegati che non posseggono la detrazione fiscale;
+select * from impiegato where detrazionefiscale = 'False'
+-- anche detrazionefiscale = 0
+
+e. Visualizzare tutti gli impiegati cui il cognome cominci con una lettera G e li visualizzi in ordine
+alfabetico;
+select * from impiegato where cognome like 'A%' order by cognome
+-- messo A perchè non avevo creato cognomi inizianti per G (la tabella usciva vuota)
+
+f. Visualizzare il numero totale degli impiegati registrati nella base dati;
+select count(idimpiegato) as totale_impiegati from impiegato
+
+g. Visualizzare il totale dei redditi mensili di tutti gli impiegati;
+select sum(redditomensile) as somma_redditi_mensili  from impiegato
+
+h. Visualizzare la media dei redditi mensili di tutti gli impiegati;
+select avg(redditomensile) as media_redditi_mensili from impiegato
+
+i. Visualizzare l’importo del reddito mensile maggiore;
+select top(1) * from impiegato order by redditomensile desc
+-- alternativa select max(redditomensile) from impiegato
+
+j. Visualizzare l’importo del reddito mensile minore;
+select top(1) * from impiegato order by redditomensile
+-- senza order descending li metto dal minore al maggiore
+-- alternativa select min(redditomensile) from impiegato
+
+k. Visualizzare gli impiegati assunti dall’ 01/01/2007 all’ 01/01/2008;
+select * from impiegato where dataassunzione between '2007-01-01' and '2008-01-01'
+
+l. Visualizzare l’età media dei lavoratori all’interno dell’azienda.
+select avg(eta) as media_eta_dipendenti from impiegato
+
+4. Creare una StoredProcedure per ognuna di queste azioni:
+a. Memorizzazione di un nuovo impiegato
+b. Aggiornamento di un nuovo impiegato
+c. Eliminazione di un impiegato
+d. Tramite una query parametrica che identifichi il tipo di impiego, visualizzare tutti gli impiegati
+che corrispondono a quel tipo di impiego;
+
